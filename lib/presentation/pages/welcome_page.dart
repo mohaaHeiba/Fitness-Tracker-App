@@ -1,8 +1,13 @@
 import 'package:fitness_tracker_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:fitness_tracker_app/presentation/navigation/navigation_bar.dart'
+    as nav;
+import 'package:get_storage/get_storage.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
+  WelcomePage({super.key});
+  final storage = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class WelcomePage extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        S.of(context).Welcome,
+                        S.of(context).welcome,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 28,
@@ -33,7 +38,7 @@ class WelcomePage extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        S.of(context).Welcome_des,
+                        S.of(context).welcome_des,
                         style: TextStyle(color: Colors.black, fontSize: 16),
                         textAlign: TextAlign.center,
                       ),
@@ -46,21 +51,37 @@ class WelcomePage extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 40,
+                        horizontal: 20,
                         vertical: 14,
                       ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      backgroundColor: Colors.blueAccent,
+                      backgroundColor: Colors.deepOrange,
                     ),
-                    onPressed: () {},
-                    child: Text(
-                      S.of(context).start,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                    onPressed: () {
+                      storage.write('loginBefore', true);
+
+                      Get.off(
+                        nav.NavigationBar(),
+                        transition: Transition.rightToLeft,
+                      );
+                    },
+                    child: SizedBox(
+                      width: 120,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            S.of(context).start,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Icon(Icons.arrow_circle_right),
+                        ],
                       ),
                     ),
                   ),

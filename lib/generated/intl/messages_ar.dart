@@ -30,5 +30,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "__________________________________________________",
     ),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "start": MessageLookupByLibrary.simpleMessage("ابداء الان"),
+    "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بك في FitTrack"),
+    "welcome_des": MessageLookupByLibrary.simpleMessage(
+      "تابع خطواتك، تمارينك وأهدافك بسهولة",
+    ),
   };
 }

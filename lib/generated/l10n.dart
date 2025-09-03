@@ -57,20 +57,20 @@ class S {
   // skipped getter for the 'Welcom Page' key
 
   /// `Welcome to FitTrack`
-  String get Welcome {
+  String get welcome {
     return Intl.message(
       'Welcome to FitTrack',
-      name: 'Welcome',
+      name: 'welcome',
       desc: '',
       args: [],
     );
   }
 
   /// ` Track your steps, workouts & goals easily`
-  String get Welcome_des {
+  String get welcome_des {
     return Intl.message(
       ' Track your steps, workouts & goals easily',
-      name: 'Welcome_des',
+      name: 'welcome_des',
       desc: '',
       args: [],
     );

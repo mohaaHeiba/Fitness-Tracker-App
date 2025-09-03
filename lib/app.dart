@@ -6,12 +6,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:fitness_tracker_app/presentation/navigation/navigation_bar.dart'
     as nav;
+import 'package:get_storage/get_storage.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final storage = GetStorage().read('loginBefore') ?? false;
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       //theme
@@ -37,10 +40,10 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
+      // locale: Locale('ar', 'EG'),
 
       //nav
-      home: WelcomePage(),
-      // nav.NavigationBar(),
+      home: storage ? nav.NavigationBar() : WelcomePage(),
     );
   }
 }

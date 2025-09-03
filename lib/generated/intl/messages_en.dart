@@ -22,10 +22,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "Welcome": MessageLookupByLibrary.simpleMessage("Welcome to FitTrack"),
-    "Welcome_des": MessageLookupByLibrary.simpleMessage(
-      " Track your steps, workouts & goals easily",
-    ),
     "goals": MessageLookupByLibrary.simpleMessage("Goals"),
     "history": MessageLookupByLibrary.simpleMessage("History"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -35,5 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "start": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "welcome": MessageLookupByLibrary.simpleMessage("Welcome to FitTrack"),
+    "welcome_des": MessageLookupByLibrary.simpleMessage(
+      " Track your steps, workouts & goals easily",
+    ),
   };
 }
