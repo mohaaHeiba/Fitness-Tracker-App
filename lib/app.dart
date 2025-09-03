@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       // locale: Locale('ar', 'EG'),
 
       //nav
-      home: !storage ? nav.NavigationBar() : WelcomePage(),
+      home: storage ? nav.NavigationBar() : WelcomePage(),
     );
   }
 }

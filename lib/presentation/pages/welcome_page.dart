@@ -1,6 +1,7 @@
-import 'package:fitness_tracker_app/core/services/locations_permissions.dart';
 import 'package:fitness_tracker_app/generated/l10n.dart';
+import 'package:fitness_tracker_app/presentation/controllers/services_controll.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:fitness_tracker_app/presentation/navigation/navigation_bar.dart'
     as nav;
@@ -9,6 +10,7 @@ import 'package:get_storage/get_storage.dart';
 class WelcomePage extends StatelessWidget {
   WelcomePage({super.key});
   final storage = GetStorage();
+  final controll = Get.find<ServicesControll>();
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +64,11 @@ class WelcomePage extends StatelessWidget {
                     ),
                     onPressed: () async {
                       storage.write('loginBefore', true);
-                      LocationsPermissions lo = LocationsPermissions();
-                      lo.getPermissionLocation();
-                      lo.getCurrentlocation();
-                      Get.off(
-                        nav.NavigationBar(),
-                        transition: Transition.rightToLeft,
-                      );
+                      await controll.getlocations();
+                      // Get.off(
+                      //   nav.NavigationBar(),
+                      //   transition: Transition.rightToLeft,
+                      // );
                     },
                     child: SizedBox(
                       width: 120,
