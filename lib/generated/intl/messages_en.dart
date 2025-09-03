@@ -22,15 +22,39 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "alert": MessageLookupByLibrary.simpleMessage("Alert"),
+    "error": MessageLookupByLibrary.simpleMessage("Error"),
     "goals": MessageLookupByLibrary.simpleMessage("Goals"),
     "history": MessageLookupByLibrary.simpleMessage("History"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "internet_connected": MessageLookupByLibrary.simpleMessage(
+      "Connected to the internet",
+    ),
+    "location_disabled": MessageLookupByLibrary.simpleMessage(
+      "Location services are disabled",
+    ),
+    "location_success": MessageLookupByLibrary.simpleMessage(
+      "Location fetched successfully",
+    ),
     "maps": MessageLookupByLibrary.simpleMessage("Maps"),
     "navigationBar": MessageLookupByLibrary.simpleMessage(
       "__________________________________________________",
     ),
+    "no_internet": MessageLookupByLibrary.simpleMessage(
+      "No internet connection",
+    ),
+    "permission_denied": MessageLookupByLibrary.simpleMessage(
+      "Location permission denied",
+    ),
+    "permission_denied_forever": MessageLookupByLibrary.simpleMessage(
+      "Location permission permanently denied, please enable it from settings",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "services": MessageLookupByLibrary.simpleMessage(
+      "__________________________________________________",
+    ),
     "start": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "success": MessageLookupByLibrary.simpleMessage("Success"),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome to FitTrack"),
     "welcome_des": MessageLookupByLibrary.simpleMessage(
       " Track your steps, workouts & goals easily",

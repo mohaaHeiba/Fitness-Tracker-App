@@ -22,15 +22,39 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "alert": MessageLookupByLibrary.simpleMessage("تنبيه"),
+    "error": MessageLookupByLibrary.simpleMessage("خطأ"),
     "goals": MessageLookupByLibrary.simpleMessage("الأهداف"),
     "history": MessageLookupByLibrary.simpleMessage("السجل"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "internet_connected": MessageLookupByLibrary.simpleMessage(
+      "تم الاتصال بالإنترنت",
+    ),
+    "location_disabled": MessageLookupByLibrary.simpleMessage(
+      "خدمات الموقع معطلة",
+    ),
+    "location_success": MessageLookupByLibrary.simpleMessage(
+      "تم جلب الموقع بنجاح",
+    ),
     "maps": MessageLookupByLibrary.simpleMessage("الخريطة"),
     "navigationBar": MessageLookupByLibrary.simpleMessage(
       "__________________________________________________",
     ),
+    "no_internet": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد اتصال بالإنترنت",
+    ),
+    "permission_denied": MessageLookupByLibrary.simpleMessage(
+      "تم رفض إذن الموقع",
+    ),
+    "permission_denied_forever": MessageLookupByLibrary.simpleMessage(
+      "تم رفض إذن الموقع نهائيًا، الرجاء تفعيله من الإعدادات",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "services": MessageLookupByLibrary.simpleMessage(
+      "__________________________________________________",
+    ),
     "start": MessageLookupByLibrary.simpleMessage("ابداء الان"),
+    "success": MessageLookupByLibrary.simpleMessage("نجاح"),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بك في FitTrack"),
     "welcome_des": MessageLookupByLibrary.simpleMessage(
       "تابع خطواتك، تمارينك وأهدافك بسهولة",

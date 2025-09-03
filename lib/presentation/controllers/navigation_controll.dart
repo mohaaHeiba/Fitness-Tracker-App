@@ -1,3 +1,4 @@
+import 'package:fitness_tracker_app/core/services/network_permissions.dart';
 import 'package:fitness_tracker_app/presentation/pages/goals_page.dart';
 import 'package:fitness_tracker_app/presentation/pages/history_page.dart';
 import 'package:fitness_tracker_app/presentation/pages/home_page.dart';
@@ -20,4 +21,10 @@ class NavigationControll extends GetxController {
     HistoryPage(),
     ProfilePage(),
   ];
+
+  @override
+  void onInit() {
+    super.onInit();
+    NetworkPermissions.monitorConnection();
+  }
 }

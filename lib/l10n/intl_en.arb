@@ -1,5 +1,19 @@
 {
 
+    "services":"__________________________________________________",
+
+        "success": "Success",
+        "alert": "Alert",
+        "error": "Error",
+
+        "location_disabled": "Location services are disabled",
+        "permission_denied": "Location permission denied",
+        "permission_denied_forever": "Location permission permanently denied, please enable it from settings",
+        "location_success": "Location fetched successfully",
+
+        "no_internet": "No internet connection",
+        "internet_connected": "Connected to the internet",
+
 
     "Welcom Page":"__________________________________________________",
 

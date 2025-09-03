@@ -1,3 +1,4 @@
+import 'package:fitness_tracker_app/core/services/locations_permissions.dart';
 import 'package:fitness_tracker_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -59,9 +60,11 @@ class WelcomePage extends StatelessWidget {
                       ),
                       backgroundColor: Colors.deepOrange,
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       storage.write('loginBefore', true);
-
+                      LocationsPermissions lo = LocationsPermissions();
+                      lo.getPermissionLocation();
+                      lo.getCurrentlocation();
                       Get.off(
                         nav.NavigationBar(),
                         transition: Transition.rightToLeft,

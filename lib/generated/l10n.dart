@@ -54,6 +54,91 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `__________________________________________________`
+  String get services {
+    return Intl.message(
+      '__________________________________________________',
+      name: 'services',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success`
+  String get success {
+    return Intl.message('Success', name: 'success', desc: '', args: []);
+  }
+
+  /// `Alert`
+  String get alert {
+    return Intl.message('Alert', name: 'alert', desc: '', args: []);
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message('Error', name: 'error', desc: '', args: []);
+  }
+
+  /// `Location services are disabled`
+  String get location_disabled {
+    return Intl.message(
+      'Location services are disabled',
+      name: 'location_disabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permission denied`
+  String get permission_denied {
+    return Intl.message(
+      'Location permission denied',
+      name: 'permission_denied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location permission permanently denied, please enable it from settings`
+  String get permission_denied_forever {
+    return Intl.message(
+      'Location permission permanently denied, please enable it from settings',
+      name: 'permission_denied_forever',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location fetched successfully`
+  String get location_success {
+    return Intl.message(
+      'Location fetched successfully',
+      name: 'location_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No internet connection`
+  String get no_internet {
+    return Intl.message(
+      'No internet connection',
+      name: 'no_internet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connected to the internet`
+  String get internet_connected {
+    return Intl.message(
+      'Connected to the internet',
+      name: 'internet_connected',
+      desc: '',
+      args: [],
+    );
+  }
+
   // skipped getter for the 'Welcom Page' key
 
   /// `Welcome to FitTrack`
