@@ -54,6 +54,33 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  // skipped getter for the 'Welcom Page' key
+
+  /// `Welcome to FitTrack`
+  String get Welcome {
+    return Intl.message(
+      'Welcome to FitTrack',
+      name: 'Welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Track your steps, workouts & goals easily`
+  String get Welcome_des {
+    return Intl.message(
+      ' Track your steps, workouts & goals easily',
+      name: 'Welcome_des',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Get Started`
+  String get start {
+    return Intl.message('Get Started', name: 'start', desc: '', args: []);
+  }
+
   /// `__________________________________________________`
   String get navigationBar {
     return Intl.message(

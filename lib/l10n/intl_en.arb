@@ -1,8 +1,18 @@
 {
+
+
+    "Welcom Page":"__________________________________________________",
+
+        "Welcome":"Welcome to FitTrack",
+        "Welcome_des":" Track your steps, workouts & goals easily",
+        "start":"Get Started",
+
+
     "navigationBar":"__________________________________________________",
         "home":"Home",
         "goals":"Goals",
         "maps":"Maps",
         "profile":"Profile",
         "history":"History"
+
 }
