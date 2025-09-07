@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           primary: Colors.white,
         ),
       ),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
 
       //locale
       localizationsDelegates: [
