@@ -1,5 +1,5 @@
 import 'package:fitness_tracker_app/generated/l10n.dart';
-import 'package:fitness_tracker_app/presentation/pages/welcome_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/welcome_page/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

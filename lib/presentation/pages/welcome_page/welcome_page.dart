@@ -1,5 +1,6 @@
 import 'package:fitness_tracker_app/generated/l10n.dart';
 import 'package:fitness_tracker_app/presentation/controllers/services_controll.dart';
+import 'package:fitness_tracker_app/presentation/pages/welcome_page/insert_data_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:fitness_tracker_app/presentation/navigation/navigation_bar.dart'
@@ -8,7 +9,6 @@ import 'package:get_storage/get_storage.dart';
 
 class WelcomePage extends StatelessWidget {
   WelcomePage({super.key});
-  final storage = GetStorage();
   final controll = Get.find<ServicesControll>();
 
   @override
@@ -62,10 +62,10 @@ class WelcomePage extends StatelessWidget {
                       backgroundColor: Colors.deepOrange,
                     ),
                     onPressed: () async {
-                      storage.write('loginBefore', true);
                       // await controll.getlocations();
                       Get.off(
-                        nav.NavigationBar(),
+                        InsertDataPage(),
+                        // nav.NavigationBar(),S
                         transition: Transition.rightToLeft,
                       );
                     },

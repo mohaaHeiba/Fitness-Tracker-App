@@ -1,9 +1,9 @@
 import 'package:fitness_tracker_app/core/services/network_permissions.dart';
-import 'package:fitness_tracker_app/presentation/pages/goals_page.dart';
-import 'package:fitness_tracker_app/presentation/pages/history_page.dart';
-import 'package:fitness_tracker_app/presentation/pages/home_page.dart';
-import 'package:fitness_tracker_app/presentation/pages/maps_page.dart';
-import 'package:fitness_tracker_app/presentation/pages/profile_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/goals/goals_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/history/history_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/home/home_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/maps/maps_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/settings/profile_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
