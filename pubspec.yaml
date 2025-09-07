@@ -43,11 +43,24 @@ dependencies:
   floor: ^1.5.0
   path_provider: ^2.1.5
 
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.6
+
+
+
+
 
   flutter_localizations:
     sdk: flutter
   geolocator: ^14.0.2
   connectivity_plus: ^6.1.5
+
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
+
 
 dev_dependencies:
   flutter_test:
