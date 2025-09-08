@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class NavigationBar extends StatelessWidget {
   NavigationBar({super.key});
   final controller = Get.find<NavigationControll>();
+  final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,53 +27,50 @@ class NavigationBar extends StatelessWidget {
       Icons.person,
     ];
 
-    return SafeArea(
-      child: Obx(
-        () => Scaffold(
-          extendBody: true,
-          body: IndexedStack(
-            index: controller.index.value,
+    return Obx(
+      () => Scaffold(
+        extendBody: true,
+        body: SafeArea(
+          child: PageView(
+            controller: pageController,
+            onPageChanged: (i) => controller.changeIndex(i),
             children: controller.screens,
           ),
-          bottomNavigationBar: CurvedNavigationBar(
-            height: 65,
-            index: controller.index.value,
-            color: Colors.deepOrange,
-            backgroundColor: Colors.transparent,
-            onTap: controller.changeIndex,
-            items: List.generate(
-              icons.length,
-              (i) => Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      icons[i],
-                      size: 28,
-                      color: controller.index.value == i
-                          ? Theme.of(context).colorScheme.primary
-                          : Theme.of(
-                              context,
-                            ).colorScheme.primary.withOpacity(0.8),
-                    ),
-                    const SizedBox(height: 4),
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 200),
-                      child: controller.index.value != i
-                          ? Text(
-                              labels[i],
-                              key: ValueKey(i),
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            )
-                          : const SizedBox.shrink(),
-                    ),
-                  ],
-                ),
+        ),
+        bottomNavigationBar: CurvedNavigationBar(
+          // height: 65,
+          index: controller.index.value,
+          color: Theme.of(context).colorScheme.onPrimary,
+          backgroundColor: const Color.fromARGB(255, 36, 36, 36),
+          onTap: (i) {
+            controller.changeIndex(i);
+            pageController.jumpToPage(i);
+          },
+          items: List.generate(
+            icons.length,
+            (i) => Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    icons[i],
+                    size: 28,
+                    color: controller.index.value == i
+                        ? Colors.deepOrange
+                        : Colors.white,
+                  ),
+                  controller.index.value != i
+                      ? Text(
+                          labels[i],
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ],
               ),
             ),
           ),

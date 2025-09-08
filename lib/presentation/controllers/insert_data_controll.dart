@@ -11,8 +11,11 @@ class InsertDataControll extends GetxController {
   final contWeight = TextEditingController();
   final contHeight = TextEditingController();
   final contGender = TextEditingController();
+  final gender = ['male', 'female'];
+  final isSelectGender = false.obs;
 
   late final DatabaseController _db;
+  final data = Rxn<UserEntity>();
 
   @override
   void onInit() {
@@ -22,7 +25,6 @@ class InsertDataControll extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     contName.dispose();
     contAge.dispose();
     contWeight.dispose();
@@ -32,31 +34,45 @@ class InsertDataControll extends GetxController {
   }
 
   Future<UserEntity?> insertData() async {
-    if (contName.text.isEmpty ||
-        contAge.text.isEmpty ||
-        contWeight.text.isEmpty ||
-        contHeight.text.isEmpty ||
-        contGender.text.isEmpty) {
-      customSnackBar("Error", "All fields are required", Colors.red);
-      return null;
-    }
+    // if (contName.text.isEmpty ||
+    //     contAge.text.isEmpty ||
+    //     contWeight.text.isEmpty ||
+    //     contHeight.text.isEmpty ||
+    //     contGender.text.isEmpty) {
+    //   customSnackBar("Error", "All fields are required", Colors.red);
+    //   return null;
+    // }
 
     final user = UserEntity(
       1,
       name: contName.text.trim(),
       age: contAge.text.toInt(),
-      gender: contGender.text.trim(),
+      gender: contGender.text,
       weight: contWeight.text.toDouble(),
       height: contHeight.text.toDouble(),
     );
 
     try {
       await _db.userdata.userdao.insertUser(user);
+      data.value = user;
       return user;
     } catch (e) {
       customSnackBar("Database Error", e.toString(), Colors.red);
       print(e);
+      return null;
+    }
+  }
 
+  Future<UserEntity?> getData() async {
+    try {
+      final user = await _db.userdata.userdao.getUser();
+      if (user != null) {
+        data.value = user;
+      }
+      return user;
+    } catch (e) {
+      customSnackBar("Database Error", e.toString(), Colors.red);
+      print(e);
       return null;
     }
   }

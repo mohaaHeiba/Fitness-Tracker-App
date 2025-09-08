@@ -22,15 +22,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.light(
           brightness: Brightness.light,
           primary: Colors.black,
+          onPrimary: Colors.black,
         ),
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.dark(
           brightness: Brightness.dark,
           primary: Colors.white,
+          onPrimary: Colors.black,
         ),
       ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
 
       //locale
       localizationsDelegates: [

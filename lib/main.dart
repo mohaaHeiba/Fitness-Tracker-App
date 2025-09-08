@@ -9,7 +9,7 @@ import 'package:get_storage/get_storage.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  final init = Get.put(DatabaseController(), permanent: true);
+  final init = Get.put(DatabaseController());
   await init.initDatabase();
   Get.put(ServicesControll(), permanent: true);
 
