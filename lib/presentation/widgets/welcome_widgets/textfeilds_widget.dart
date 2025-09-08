@@ -14,7 +14,7 @@ Widget textFieldWidget(
         return '$label is required';
       }
       if (type == TextInputType.number) {
-        if (double.tryParse(value) == null) {
+        if (double.tryParse(value) == null || int.tryParse(value) == null) {
           return 'enter a valid number';
         }
       }

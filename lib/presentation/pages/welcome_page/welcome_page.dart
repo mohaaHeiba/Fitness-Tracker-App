@@ -3,9 +3,6 @@ import 'package:fitness_tracker_app/presentation/controllers/services_controll.d
 import 'package:fitness_tracker_app/presentation/pages/welcome_page/insert_data_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:fitness_tracker_app/presentation/navigation/navigation_bar.dart'
-    as nav;
-import 'package:get_storage/get_storage.dart';
 
 class WelcomePage extends StatelessWidget {
   WelcomePage({super.key});

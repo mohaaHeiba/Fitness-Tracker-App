@@ -5,11 +5,13 @@ import 'package:fitness_tracker_app/presentation/navigation/navigation_bar.dart'
 import 'package:fitness_tracker_app/presentation/widgets/welcome_widgets/textfeilds_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class InsertDataPage extends StatelessWidget {
   InsertDataPage({super.key});
 
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(InsertDataControll());
@@ -26,7 +28,7 @@ class InsertDataPage extends StatelessWidget {
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(25.0),
+              padding: const EdgeInsets.all(20.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -162,9 +164,16 @@ class InsertDataPage extends StatelessWidget {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           // print("Form is valid");
-
+                          if (controller.contGender.text.isEmpty) {
+                            controller.contGender.text =
+                                controller.gender.first;
+                          }
                           await controller.insertData();
-                          Get.to(nav.NavigationBar());
+                          Get.offAll(
+                            nav.NavigationBar(),
+                            transition: Transition.fade,
+                          );
+                          GetStorage().write('loginBefore', true);
                         } else {
                           print("Form is invalid");
                         }
