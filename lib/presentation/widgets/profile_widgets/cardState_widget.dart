@@ -7,6 +7,13 @@ Widget buildStateCard(IconData icon, String label, final value) {
   return Expanded(
     child: Container(
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
         borderRadius: BorderRadius.circular(24),
         color: Colors.white,
       ),

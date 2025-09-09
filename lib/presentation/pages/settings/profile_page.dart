@@ -1,11 +1,11 @@
 import 'package:fitness_tracker_app/presentation/controllers/insert_data_controll.dart';
 import 'package:fitness_tracker_app/presentation/pages/home/home_page.dart';
+import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/bmi_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/cardState_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/infocard_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/settings_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -36,10 +36,20 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 spacing: 20,
                 children: [
+                  const SizedBox(height: 5),
+
                   //build information card
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 20,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
+
                       borderRadius: BorderRadius.circular(24),
                       color: Colors.white,
                     ),
@@ -86,22 +96,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                           SizedBox(height: 10),
 
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 6,
-                            ),
-
-                            decoration: BoxDecoration(
-                              color: Colors.deepOrange.withOpacity(0.2),
-                              borderRadius: BorderRadius.circular(20),
-                              border: BoxBorder.all(
-                                color: Colors.black,
-                                width: 1,
-                              ),
-                            ),
-                            child: Text('BMI-200 normal'),
-                          ),
+                          BmiWidget().bmiWidget(controller.data.value),
                           SizedBox(height: 20),
 
                           buildInfCard(
@@ -145,6 +140,13 @@ class ProfilePage extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 20,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
                       borderRadius: BorderRadius.circular(24),
                       color: Colors.white,
                     ),

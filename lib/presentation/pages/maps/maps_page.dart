@@ -9,11 +9,7 @@ class MapsPage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-             colors: [
-              Color(0xFFFFF8F3),
-              Color(0xFFFFDBAC),
-              Color(0xFFFFDBAC),
-            ],
+            colors: [Color(0xFFFFF8F3), Color(0xFFFFDBAC), Color(0xFFFFDBAC)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
