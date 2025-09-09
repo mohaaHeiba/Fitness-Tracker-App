@@ -1,5 +1,6 @@
-import 'package:fitness_tracker_app/presentation/controllers/insert_data_controll.dart';
+import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
 import 'package:fitness_tracker_app/presentation/pages/home/home_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/settings/edit_profile_page.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/bmi_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/cardState_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/infocard_widget.dart';
@@ -12,7 +13,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<InsertDataControll>();
+    final controller = Get.find<DataUserControll>();
     controller.getData();
     return Scaffold(
       body: Obx(() {
@@ -171,7 +172,7 @@ class ProfilePage extends StatelessWidget {
                             "Edit Profile",
                             "Update your personal information",
                             false,
-                            HomePage(),
+                            EditProfilePage(),
                           ),
                           buildSettingItem(
                             Icons.notifications_outlined,

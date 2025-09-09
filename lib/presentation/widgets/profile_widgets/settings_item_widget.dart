@@ -1,4 +1,4 @@
-import 'package:fitness_tracker_app/presentation/controllers/insert_data_controll.dart';
+import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
 import 'package:fitness_tracker_app/presentation/controllers/navigation_controll.dart';
 import 'package:fitness_tracker_app/presentation/pages/welcome_page/welcome_page.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ Widget buildSettingItem(
   bool showDialog,
   Widget? page,
 ) {
-  final controller = Get.find<InsertDataControll>();
+  final controller = Get.find<DataUserControll>();
   final controllerNav = Get.find<NavigationControll>();
 
   final colorTitle = title == 'Sign Out' ? Colors.red : Colors.black;
@@ -49,7 +49,7 @@ Widget buildSettingItem(
         );
       } else {
         Get.to(
-          () => page,
+          () => page!,
           // arguments:
           transition: Transition.rightToLeft,
         );

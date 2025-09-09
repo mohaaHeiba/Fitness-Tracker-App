@@ -1,4 +1,4 @@
-import 'package:fitness_tracker_app/presentation/controllers/insert_data_controll.dart';
+import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
 
 import 'package:fitness_tracker_app/presentation/navigation/navigation_bar.dart'
     as nav;
@@ -14,7 +14,7 @@ class InsertDataPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(InsertDataControll());
+    final controller = Get.put(DataUserControll());
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,

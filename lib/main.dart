@@ -1,6 +1,6 @@
 import 'package:fitness_tracker_app/app.dart';
+import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
 import 'package:fitness_tracker_app/presentation/controllers/init_data_controll.dart';
-import 'package:fitness_tracker_app/presentation/controllers/insert_data_controll.dart';
 import 'package:fitness_tracker_app/presentation/controllers/navigation_controll.dart';
 import 'package:fitness_tracker_app/presentation/controllers/services_controll.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ Future<void> main() async {
 
   Get.put(ServicesControll(), permanent: true);
 
-  Get.put(InsertDataControll());
+  Get.put(DataUserControll());
 
   Get.put(NavigationControll(), permanent: true);
   runApp(const MyApp());

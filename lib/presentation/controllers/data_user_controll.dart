@@ -5,7 +5,7 @@ import 'package:fitness_tracker_app/presentation/widgets/custom_widgets/custom_s
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class InsertDataControll extends GetxController {
+class DataUserControll extends GetxController {
   final contName = TextEditingController();
   final contAge = TextEditingController();
   final contWeight = TextEditingController();
@@ -73,6 +73,31 @@ class InsertDataControll extends GetxController {
     } catch (e) {
       customSnackBar("Database Error", e.toString(), Colors.red);
       print(e);
+      return null;
+    }
+  }
+
+  Future<UserEntity?> updateUser() async {
+    if (data.value != null) {
+      final user = UserEntity(
+        1,
+        name: contName.text.trim(),
+        age: contAge.text.toInt(),
+        gender: contGender.text,
+        weight: contWeight.text.toDouble(),
+        height: contHeight.text.toDouble(),
+      );
+      try {
+        await _db.userdata.userdao.updateUser(user);
+        data.value = user;
+        return user;
+      } catch (e) {
+        customSnackBar("Error", e.toString(), Colors.red);
+        print(e);
+        return null;
+      }
+    } else {
+      customSnackBar("Error", "No user data to Update", Colors.red);
       return null;
     }
   }

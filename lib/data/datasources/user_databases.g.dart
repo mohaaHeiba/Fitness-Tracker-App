@@ -126,6 +126,18 @@ class _$UserDao extends UserDao {
                   'weight': item.weight,
                   'height': item.height
                 }),
+        _userEntityUpdateAdapter = UpdateAdapter(
+            database,
+            'user',
+            ['id'],
+            (UserEntity item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'gender': item.gender,
+                  'age': item.age,
+                  'weight': item.weight,
+                  'height': item.height
+                }),
         _userEntityDeletionAdapter = DeletionAdapter(
             database,
             'user',
@@ -147,6 +159,8 @@ class _$UserDao extends UserDao {
 
   final InsertionAdapter<UserEntity> _userEntityInsertionAdapter;
 
+  final UpdateAdapter<UserEntity> _userEntityUpdateAdapter;
+
   final DeletionAdapter<UserEntity> _userEntityDeletionAdapter;
 
   @override
@@ -163,6 +177,12 @@ class _$UserDao extends UserDao {
   @override
   Future<int> insertUser(UserEntity userentity) {
     return _userEntityInsertionAdapter.insertAndReturnId(
+        userentity, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<int> updateUser(UserEntity userentity) {
+    return _userEntityUpdateAdapter.updateAndReturnChangedRows(
         userentity, OnConflictStrategy.abort);
   }
 
