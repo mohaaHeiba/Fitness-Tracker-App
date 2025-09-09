@@ -1,4 +1,5 @@
 import 'package:fitness_tracker_app/presentation/controllers/insert_data_controll.dart';
+import 'package:fitness_tracker_app/presentation/pages/home/home_page.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/cardState_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/infocard_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/settings_item_widget.dart';
@@ -167,26 +168,36 @@ class ProfilePage extends StatelessWidget {
                             Icons.edit_outlined,
                             "Edit Profile",
                             "Update your personal information",
+                            false,
+                            HomePage(),
                           ),
                           buildSettingItem(
                             Icons.notifications_outlined,
                             "Notifications",
                             "Manage your notification ",
+                            false,
+                            HomePage(),
                           ),
                           buildSettingItem(
                             Icons.privacy_tip_outlined,
                             "Privacy",
                             "Control your privacy settings",
+                            false,
+                            HomePage(),
                           ),
                           buildSettingItem(
                             Icons.help_outline,
                             "Help & Support",
                             "Get help or contact support",
+                            false,
+                            HomePage(),
                           ),
                           buildSettingItem(
                             Icons.logout,
                             "Sign Out",
                             "Sign out of your account",
+                            true,
+                            null,
                           ),
                         ],
                       ),

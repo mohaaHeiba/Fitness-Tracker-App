@@ -1,21 +1,59 @@
+import 'package:fitness_tracker_app/presentation/controllers/insert_data_controll.dart';
+import 'package:fitness_tracker_app/presentation/controllers/navigation_controll.dart';
+import 'package:fitness_tracker_app/presentation/pages/welcome_page/welcome_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Widget buildSettingItem(
   IconData icon,
   String title,
   String subtitle,
-  // Widget? page,
+  bool showDialog,
+  Widget? page,
 ) {
+  final controller = Get.find<InsertDataControll>();
+  final controllerNav = Get.find<NavigationControll>();
+
   final colorTitle = title == 'Sign Out' ? Colors.red : Colors.black;
   final colorIcon = title == 'Sign Out' ? Colors.red : Colors.grey;
 
   return ListTile(
     onTap: () {
-      // Get.to(
-      //   () => page,
-      //   // arguments:
-      //   transition: Transition.rightToLeft,
-      // );
+      if (showDialog == true) {
+        Get.dialog(
+          AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            title: const Text("Sign Out"),
+            content: const Text("This will clear all data! Are you sure?"),
+            actions: [
+              TextButton(
+                onPressed: () => Get.back(),
+                child: const Text("Cancel"),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  await controller.deleteData();
+                  Get.offAll(WelcomePage());
+                  controllerNav.index.value = 2;
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text("Sign Out"),
+              ),
+            ],
+          ),
+        );
+      } else {
+        Get.to(
+          () => page,
+          // arguments:
+          transition: Transition.rightToLeft,
+        );
+      }
     },
     leading: Container(
       decoration: BoxDecoration(

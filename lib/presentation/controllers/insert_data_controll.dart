@@ -76,4 +76,14 @@ class InsertDataControll extends GetxController {
       return null;
     }
   }
+
+  Future<void> deleteData() async {
+    if (data.value != null) {
+      await _db.userdata.userdao.deleteUser(data.value!);
+      data.value = null;
+      customSnackBar("Success", "User data has been removed", Colors.green);
+    } else {
+      customSnackBar("Error", "No user data to delete", Colors.red);
+    }
+  }
 }

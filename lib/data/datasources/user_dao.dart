@@ -8,4 +8,7 @@ abstract class UserDao {
 
   @Query('select *from user limit 1')
   Future<UserEntity?> getUser();
+
+  @delete
+  Future<int> deleteUser(UserEntity userentity);
 }
