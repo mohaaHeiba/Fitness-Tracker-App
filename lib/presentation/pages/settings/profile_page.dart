@@ -1,5 +1,6 @@
 import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
 import 'package:fitness_tracker_app/presentation/pages/home/home_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/settings/contuctus_page.dart';
 import 'package:fitness_tracker_app/presentation/pages/settings/edit_profile_page.dart';
 import 'package:fitness_tracker_app/presentation/pages/settings/privacy_page.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/bmi_widget.dart';
@@ -210,7 +211,7 @@ class ProfilePage extends StatelessWidget {
                             "Help & Support",
                             "Get help or contact support",
                             false,
-                            HomePage(),
+                            ContactUsPage(),
                           ),
                           buildSettingItem(
                             Icons.logout,
