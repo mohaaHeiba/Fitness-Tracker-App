@@ -1,6 +1,7 @@
 import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
 import 'package:fitness_tracker_app/presentation/pages/home/home_page.dart';
 import 'package:fitness_tracker_app/presentation/pages/settings/edit_profile_page.dart';
+import 'package:fitness_tracker_app/presentation/pages/settings/privacy_page.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/bmi_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/cardState_widget.dart';
 import 'package:fitness_tracker_app/presentation/widgets/profile_widgets/infocard_widget.dart';
@@ -79,10 +80,26 @@ class ProfilePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.white,
-                              size: 40,
+                            child: Obx(
+                              () => !controller.isSelectGender.value
+                                  ? Center(
+                                      child: Icon(
+                                        Icons.person,
+                                        color: Colors.white,
+                                        size: 60,
+                                      ),
+                                    )
+                                  : Center(
+                                      child: ClipOval(
+                                        child: Image.asset(
+                                          'assets/images/female.png',
+                                          color: Colors.white,
+                                          fit: BoxFit.contain,
+                                          width: 60,
+                                          height: 60,
+                                        ),
+                                      ),
+                                    ),
                             ),
                           ),
                           SizedBox(height: 10),
@@ -186,7 +203,7 @@ class ProfilePage extends StatelessWidget {
                             "Privacy",
                             "Control your privacy settings",
                             false,
-                            HomePage(),
+                            PrivacySettingsPage(),
                           ),
                           buildSettingItem(
                             Icons.help_outline,

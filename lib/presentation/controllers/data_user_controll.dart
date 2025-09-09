@@ -13,6 +13,7 @@ class DataUserControll extends GetxController {
   final contGender = TextEditingController();
   final gender = ['male', 'female'];
   final isSelectGender = false.obs;
+  final tempState = false.obs;
 
   late final DatabaseController _db;
   final data = Rxn<UserEntity>();
@@ -61,6 +62,11 @@ class DataUserControll extends GetxController {
       print(e);
       return null;
     }
+  }
+
+  Future<void> getStateicon() async {
+    isSelectGender.value = data.value?.gender == 'female';
+    tempState.value = isSelectGender.value;
   }
 
   Future<UserEntity?> getData() async {

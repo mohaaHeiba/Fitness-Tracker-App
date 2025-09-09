@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/home/heiba/Codes/flutter/Projects/fitness_tracker_app/linux"
+    "cmake.sourceDirectory": "/home/heiba/Codes/flutter/Projects/fitness_tracker_app/linux",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
