@@ -36,7 +36,8 @@ Widget buildSettingItem(
               ElevatedButton(
                 onPressed: () async {
                   Get.offAll(WelcomePage());
-                  GetStorage().write('loginBefore', false);
+                  await GetStorage().erase();
+                  controller.profileImage.value = null;
                   controller.contAge.clear();
                   controller.contGender.clear();
                   controller.contHeight.clear();
