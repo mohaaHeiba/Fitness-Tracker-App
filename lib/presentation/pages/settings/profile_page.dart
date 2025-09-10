@@ -16,49 +16,44 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<DataUserControll>();
-    controller.getData();
+    controller.getStateicon();
     return Scaffold(
-      body: Obx(() {
-        final user = controller.data.value;
-
-        if (user == null) {
-          return Center(child: Text('login data again'));
-        }
-        return Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFFFFF8F3), Color(0xFFFFDBAC), Color(0xFFFFDBAC)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFFFF8F3), Color(0xFFFFDBAC), Color(0xFFFFDBAC)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                spacing: 20,
-                children: [
-                  const SizedBox(height: 5),
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              spacing: 20,
+              children: [
+                const SizedBox(height: 5),
 
-                  //build information card
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
-                        ),
-                      ],
+                //build information card
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 20,
+                        offset: const Offset(0, 10),
+                      ),
+                    ],
 
-                      borderRadius: BorderRadius.circular(24),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
+                    borderRadius: BorderRadius.circular(24),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Obx(
+                      () => Column(
                         children: [
                           Container(
                             height: 80,
@@ -136,9 +131,11 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
 
-                  // state card
-                  Row(
+                // state card
+                Obx(
+                  () => Row(
                     children: [
                       buildStateCard(
                         Icons.monitor_weight_outlined,
@@ -154,82 +151,82 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
 
-                  // Settings Container
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(24),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
-                      child: Column(
-                        spacing: 10,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Text(
-                              "Settings",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
+                // Settings Container
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 20,
+                        offset: const Offset(0, 10),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(24),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
+                    child: Column(
+                      spacing: 10,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text(
+                            "Settings",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             ),
                           ),
-                          buildSettingItem(
-                            Icons.edit_outlined,
-                            "Edit Profile",
-                            "Update your personal information",
-                            false,
-                            EditProfilePage(),
-                          ),
-                          buildSettingItem(
-                            Icons.notifications_outlined,
-                            "Notifications",
-                            "Manage your notification ",
-                            false,
-                            HomePage(),
-                          ),
-                          buildSettingItem(
-                            Icons.privacy_tip_outlined,
-                            "Privacy",
-                            "Control your privacy settings",
-                            false,
-                            PrivacySettingsPage(),
-                          ),
-                          buildSettingItem(
-                            Icons.help_outline,
-                            "Help & Support",
-                            "Get help or contact support",
-                            false,
-                            ContactUsPage(),
-                          ),
-                          buildSettingItem(
-                            Icons.logout,
-                            "Sign Out",
-                            "Sign out of your account",
-                            true,
-                            null,
-                          ),
-                        ],
-                      ),
+                        ),
+                        buildSettingItem(
+                          Icons.edit_outlined,
+                          "Edit Profile",
+                          "Update your personal information",
+                          false,
+                          EditProfilePage(),
+                        ),
+                        buildSettingItem(
+                          Icons.notifications_outlined,
+                          "Notifications",
+                          "Manage your notification ",
+                          false,
+                          HomePage(),
+                        ),
+                        buildSettingItem(
+                          Icons.privacy_tip_outlined,
+                          "Privacy",
+                          "Control your privacy settings",
+                          false,
+                          PrivacySettingsPage(),
+                        ),
+                        buildSettingItem(
+                          Icons.help_outline,
+                          "Help & Support",
+                          "Get help or contact support",
+                          false,
+                          ContactUsPage(),
+                        ),
+                        buildSettingItem(
+                          Icons.logout,
+                          "Sign Out",
+                          "Sign out of your account",
+                          true,
+                          null,
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 }

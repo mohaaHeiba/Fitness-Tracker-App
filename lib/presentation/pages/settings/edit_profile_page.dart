@@ -1,4 +1,5 @@
 import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
+import 'package:fitness_tracker_app/presentation/widgets/custom_widgets/custom_appbar.dart';
 import 'package:fitness_tracker_app/presentation/widgets/welcome_widgets/textfeilds_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +9,7 @@ class EditProfilePage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DataUserControll());
+    final controller = Get.find<DataUserControll>();
 
     return Scaffold(
       body: Container(
@@ -28,43 +29,7 @@ class EditProfilePage extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () => Get.back(),
-                            child: Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.9),
-                                borderRadius: BorderRadius.circular(12),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
-                                    blurRadius: 8,
-                                    offset: const Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: const Icon(
-                                Icons.arrow_back_ios,
-                                size: 20,
-                                color: Color(0xFF2D2D2D),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 16),
-                          const Text(
-                            "Contuct Us",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF2D2D2D),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    customAppBar("Editing Profile", padding: 0),
 
                     SizedBox(height: 40),
 

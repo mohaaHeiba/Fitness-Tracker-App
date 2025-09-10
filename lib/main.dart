@@ -15,7 +15,7 @@ Future<void> main() async {
 
   Get.put(ServicesControll(), permanent: true);
 
-  Get.put(DataUserControll());
+  Get.put(DataUserControll(), permanent: true);
 
   Get.put(NavigationControll(), permanent: true);
   runApp(const MyApp());

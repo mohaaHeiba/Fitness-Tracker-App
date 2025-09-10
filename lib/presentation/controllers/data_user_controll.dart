@@ -22,6 +22,7 @@ class DataUserControll extends GetxController {
   void onInit() {
     super.onInit();
     _db = Get.find<DatabaseController>();
+    getData();
   }
 
   @override

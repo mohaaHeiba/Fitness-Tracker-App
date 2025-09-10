@@ -35,6 +35,11 @@ Widget buildSettingItem(
               ElevatedButton(
                 onPressed: () async {
                   await controller.deleteData();
+                  controller.contAge.clear();
+                  controller.contGender.clear();
+                  controller.contHeight.clear();
+                  controller.contName.clear();
+                  controller.contWeight.clear();
                   Get.offAll(WelcomePage());
                   controllerNav.index.value = 2;
                 },
