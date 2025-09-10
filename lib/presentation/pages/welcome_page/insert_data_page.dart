@@ -36,23 +36,50 @@ class InsertDataPage extends StatelessWidget {
                 key: _formKey,
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      radius: 100,
-                      backgroundColor: Color(0xFFFFF8F3),
-
-                      child: Obx(
-                        () => !controller.isSelectGender.value
-                            ? Icon(
+                    GestureDetector(
+                      onTap: () async {
+                        await controller.pickImage();
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              blurRadius: 20,
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: CircleAvatar(
+                          radius: 100,
+                          backgroundColor: const Color(0xFFFFF8F3),
+                          child: Obx(() {
+                            if (controller.profileImage.value != null) {
+                              return ClipOval(
+                                child: Image.file(
+                                  controller.profileImage.value!,
+                                  width: 200,
+                                  height: 200,
+                                  fit: BoxFit.cover,
+                                ),
+                              );
+                            } else if (!controller.isSelectGender.value) {
+                              return Icon(
                                 Icons.person,
                                 color: Colors.deepOrange[400],
                                 size: 150,
-                              )
-                            : Image.asset(
+                              );
+                            } else {
+                              return Image.asset(
                                 'assets/images/female.png',
                                 color: Colors.deepOrange[400],
                                 width: 105,
                                 height: 105,
-                              ),
+                              );
+                            }
+                          }),
+                        ),
                       ),
                     ),
 
@@ -96,6 +123,13 @@ class InsertDataPage extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   color: Colors.deepOrangeAccent,
                                   borderRadius: BorderRadius.circular(15),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.5),
+                                      blurRadius: 6,
+                                      offset: const Offset(0, 0),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -163,31 +197,42 @@ class InsertDataPage extends StatelessWidget {
                     ),
                     SizedBox(height: 40),
 
-                    ElevatedButton(
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          // print("Form is valid");
-                          if (controller.contGender.text.isEmpty) {
-                            controller.contGender.text =
-                                controller.gender.first;
-                          }
-                          await controller.insertData();
-                          Get.offAll(
-                            nav.NavigationBar(),
-                            transition: Transition.fade,
-                          );
-                          await controllService.getPermission();
-
-                          GetStorage().write('loginBefore', true);
-                        } else {
-                          print("Form is invalid");
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepOrange,
-                        minimumSize: Size(200, 50),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 20,
+                            offset: const Offset(0, 10),
+                          ),
+                        ],
                       ),
-                      child: Text('Create proflie'),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            // print("Form is valid");
+                            if (controller.contGender.text.isEmpty) {
+                              controller.contGender.text =
+                                  controller.gender.first;
+                            }
+                            await controller.insertData();
+                            Get.offAll(
+                              nav.NavigationBar(),
+                              transition: Transition.fade,
+                            );
+                            await controllService.getPermission();
+
+                            GetStorage().write('loginBefore', true);
+                          } else {
+                            print("Form is invalid");
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepOrange,
+                          minimumSize: Size(200, 50),
+                        ),
+                        child: Text('Create proflie'),
+                      ),
                     ),
                   ],
                 ),

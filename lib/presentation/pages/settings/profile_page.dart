@@ -56,8 +56,8 @@ class ProfilePage extends StatelessWidget {
                       () => Column(
                         children: [
                           Container(
-                            height: 80,
-                            width: 80,
+                            height: 120,
+                            width: 120,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
@@ -76,27 +76,34 @@ class ProfilePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Obx(
-                              () => !controller.isSelectGender.value
-                                  ? Center(
-                                      child: Icon(
-                                        Icons.person,
-                                        color: Colors.white,
-                                        size: 60,
-                                      ),
-                                    )
-                                  : Center(
-                                      child: ClipOval(
-                                        child: Image.asset(
-                                          'assets/images/female.png',
-                                          color: Colors.white,
-                                          fit: BoxFit.contain,
-                                          width: 60,
-                                          height: 60,
-                                        ),
-                                      ),
-                                    ),
-                            ),
+                            child: Obx(() {
+                              if (controller.profileImage.value != null) {
+                                return ClipOval(
+                                  child: Image.file(
+                                    controller.profileImage.value!,
+                                    fit: BoxFit.cover,
+                                    width: 80,
+                                    height: 80,
+                                  ),
+                                );
+                              } else if (controller.isSelectGender.value) {
+                                return ClipOval(
+                                  child: Image.asset(
+                                    'assets/images/female.png',
+                                    color: Colors.white,
+                                    fit: BoxFit.contain,
+                                    width: 60,
+                                    height: 60,
+                                  ),
+                                );
+                              } else {
+                                return Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                  size: 60,
+                                );
+                              }
+                            }),
                           ),
                           SizedBox(height: 10),
                           Text(

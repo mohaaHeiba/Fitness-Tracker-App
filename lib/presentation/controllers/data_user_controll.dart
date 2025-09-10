@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:dartx/dartx.dart';
 import 'package:fitness_tracker_app/domain/entitys/user_entity.dart';
 import 'package:fitness_tracker_app/presentation/controllers/init_data_controll.dart';
 import 'package:fitness_tracker_app/presentation/widgets/custom_widgets/custom_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DataUserControll extends GetxController {
   final contName = TextEditingController();
@@ -14,6 +18,7 @@ class DataUserControll extends GetxController {
   final gender = ['male', 'female'];
   final isSelectGender = false.obs;
   final tempState = false.obs;
+  final profileImage = Rx<File?>(null);
 
   late final DatabaseController _db;
   final data = Rxn<UserEntity>();
@@ -23,6 +28,10 @@ class DataUserControll extends GetxController {
     super.onInit();
     _db = Get.find<DatabaseController>();
     getData();
+    String? savedPath = GetStorage().read('profileImage');
+    if (savedPath != null) {
+      profileImage.value = File(savedPath);
+    }
   }
 
   @override
@@ -33,6 +42,16 @@ class DataUserControll extends GetxController {
     contHeight.dispose();
     contGender.dispose();
     super.onClose();
+  }
+
+  Future<void> pickImage() async {
+    final pickedimage = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedimage != null) {
+      profileImage.value = File(pickedimage.path);
+      GetStorage().write('profileImage', pickedimage.path);
+    }
   }
 
   Future<UserEntity?> insertData() async {
