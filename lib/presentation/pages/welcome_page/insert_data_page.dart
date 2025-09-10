@@ -1,4 +1,5 @@
 import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
+import 'package:fitness_tracker_app/presentation/controllers/services_controll.dart';
 
 import 'package:fitness_tracker_app/presentation/navigation/navigation_bar.dart'
     as nav;
@@ -15,6 +16,8 @@ class InsertDataPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(DataUserControll());
+    final controllService = Get.put(ServicesControll());
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -173,6 +176,8 @@ class InsertDataPage extends StatelessWidget {
                             nav.NavigationBar(),
                             transition: Transition.fade,
                           );
+                          await controllService.getPermission();
+
                           GetStorage().write('loginBefore', true);
                         } else {
                           print("Form is invalid");

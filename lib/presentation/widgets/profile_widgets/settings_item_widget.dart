@@ -3,6 +3,7 @@ import 'package:fitness_tracker_app/presentation/controllers/navigation_controll
 import 'package:fitness_tracker_app/presentation/pages/welcome_page/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 Widget buildSettingItem(
   IconData icon,
@@ -34,13 +35,15 @@ Widget buildSettingItem(
               ),
               ElevatedButton(
                 onPressed: () async {
-                  await controller.deleteData();
+                  Get.offAll(WelcomePage());
+                  GetStorage().write('loginBefore', false);
                   controller.contAge.clear();
                   controller.contGender.clear();
                   controller.contHeight.clear();
                   controller.contName.clear();
                   controller.contWeight.clear();
-                  Get.offAll(WelcomePage());
+                  await controller.deleteData();
+
                   controllerNav.index.value = 2;
                 },
                 style: ElevatedButton.styleFrom(

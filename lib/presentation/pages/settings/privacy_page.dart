@@ -1,4 +1,3 @@
-import 'package:fitness_tracker_app/presentation/pages/home/home_page.dart';
 import 'package:fitness_tracker_app/presentation/widgets/custom_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

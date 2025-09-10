@@ -1,6 +1,5 @@
 import 'package:fitness_tracker_app/presentation/widgets/custom_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUsPage extends StatelessWidget {

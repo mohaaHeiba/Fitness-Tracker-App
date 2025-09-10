@@ -1,4 +1,5 @@
 import 'package:fitness_tracker_app/app.dart';
+import 'package:fitness_tracker_app/presentation/controllers/animated_controll.dart';
 import 'package:fitness_tracker_app/presentation/controllers/data_user_controll.dart';
 import 'package:fitness_tracker_app/presentation/controllers/init_data_controll.dart';
 import 'package:fitness_tracker_app/presentation/controllers/navigation_controll.dart';
@@ -18,5 +19,9 @@ Future<void> main() async {
   Get.put(DataUserControll(), permanent: true);
 
   Get.put(NavigationControll(), permanent: true);
+
+  //lazy put
+
+  Get.lazyPut(() => AnimatedControll());
   runApp(const MyApp());
 }

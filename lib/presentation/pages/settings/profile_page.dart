@@ -100,7 +100,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            controller.data.value!.name ?? '',
+                            controller.data.value?.name ?? '',
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: 24,
@@ -116,7 +116,7 @@ class ProfilePage extends StatelessWidget {
                           buildInfCard(
                             Icons.cake,
                             'Age',
-                            controller.data.value!.age ?? '',
+                            controller.data.value!.age,
                           ),
                           SizedBox(height: 10),
 
@@ -140,14 +140,14 @@ class ProfilePage extends StatelessWidget {
                       buildStateCard(
                         Icons.monitor_weight_outlined,
                         'weight',
-                        controller.data.value!.weight,
+                        controller.data.value?.weight ?? '',
                       ),
                       SizedBox(width: 20),
 
                       buildStateCard(
                         Icons.height_outlined,
                         'height',
-                        controller.data.value!.height,
+                        controller.data.value?.height ?? '',
                       ),
                     ],
                   ),
